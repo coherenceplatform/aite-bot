@@ -1,0 +1,6 @@
+openai[datalib]
+openai[embeddings]
+pandas
+ipython
+flask
+pinecone-client

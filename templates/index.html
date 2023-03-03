@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AI QA Engineer</title>
+</head>
+<body>
+    <h1>Instructions</h1>
+    <p>I'm a AI QA engineer. Upload some code and I will generate a playwright.js test file for it. Max of 3000 tokens in the file please.</p>
+
+    <h1>Code Input</h1>
+    <p>Upload some code and let's generate a test plan...</p>
+	<form action="/generate" method="post" enctype="multipart/form-data">
+		<label for="file">Choose a file to upload:</label>
+		<input type="file" id="file" name="file"><br><br>
+		<input type="submit" value="Submit">
+	</form> 
+    
+    {% if test_plan %}
+    <h1>Test Plan</h1>
+    <div id="content"><pre>{{ test_plan }}</pre></div>
+    {% endif %}
+</body>
+</html>
