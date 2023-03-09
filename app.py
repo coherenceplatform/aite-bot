@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, session, redirect
-import os
-
 from ai_logic import (
     generate_plan,
+    word_count,
 )
+from flask import Flask, request, render_template, session, redirect
+import os
+from werkzeug.exceptions import BadRequest
 
 app = Flask(__name__)
 
@@ -16,7 +17,12 @@ def index():
 @app.route("/generate", methods=["POST"])
 def generate():
     uploaded_file = request.files["file"]
-    plan = generate_plan(uploaded_file.read())
+
+    _uploaded = uploaded_file.read()
+    if word_count(_uploaded) > 3000:
+        raise BadRequest
+
+    plan = generate_plan(_uploaded)
     return render_template("index.html", test_plan=plan)
 
 

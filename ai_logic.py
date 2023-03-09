@@ -7,7 +7,7 @@ import pandas as pd
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
 
-def _words(history):
+def word_count(history):
     return len(str(history).split(" "))
 
 
@@ -23,7 +23,7 @@ def generate_plan(code):
     ]
 
     print(
-        f"Before plan, have {len(history)} messages in history | {_words(history)} words"
+        f"Before plan, have {len(history)} messages in history | {word_count(history)} words"
     )
 
     chat = openai.ChatCompletion.create(
@@ -40,7 +40,7 @@ def generate_plan(code):
     )
 
     print(
-        f"After plan, have {len(history)} messages in history | {_words(history)} words"
+        f"After plan, have {len(history)} messages in history | {word_count(history)} words"
     )
 
     chat = openai.ChatCompletion.create(
