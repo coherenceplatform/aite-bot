@@ -1,0 +1,5 @@
+# for internal dev use
+notes.txt
+sample.py
+.vscode/*
+__pycache__/*

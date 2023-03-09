@@ -1,0 +1,4 @@
+openai[datalib]
+openai[embeddings]
+flask
+black
